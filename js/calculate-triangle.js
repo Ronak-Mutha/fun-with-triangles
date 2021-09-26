@@ -8,17 +8,21 @@ const sumOfAngles = (angle1, angle2, angle3) => {
 }
 
 const isTriangle = () => {
-  if(!inputs[0].value || !inputs[1].value || !inputs[2].value) {
+  angle1 = inputs[0].value;
+  angle2 = inputs[1].value;
+  angle3 = inputs[2].value;
+  if(!(angle1 && angle2 && angle3)) {
+    console.log(`${angle1} : ${angle2} : ${angle3} `)
     outputElement.innerText = 'Please fill all the input fields.'
     return;
   }
   const sum = sumOfAngles(
-    Number(inputs[0].value),
-    Number(inputs[1].value),
-    Number(inputs[2].value)
+    Number(angle1),
+    Number(angle2),
+    Number(angle3)
   );
 
-  if (sum === 180) {
+  if (sum === 180 && angle1 > 0 && angle2 > 0 && angle3 > 0) {
     outputElement.innerText = "Yay, the angles form a triangle!";
   } else {
     outputElement.innerText = "Oh Oh! The angle doesn't form a triangle";
