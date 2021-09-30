@@ -9,6 +9,11 @@ const calculateHypotenuse = () => {
         return;
     }
 
+    if(base.value < 1 || height.value < 1) {
+        outputElement.innerHTML = 'Value should be greater than zero.';
+        return;
+    }
+
 
     const  sumOfSquares = base.value ** 2 + height.value ** 2;
 

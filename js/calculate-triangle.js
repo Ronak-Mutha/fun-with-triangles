@@ -22,7 +22,12 @@ const isTriangle = () => {
     Number(angle3)
   );
 
-  if (sum === 180 && angle1 > 0 && angle2 > 0 && angle3 > 0) {
+  if(angle1 < 1 || angle2 < 1 || angle3 < 1) {
+    outputElement.innerText = "Angle should be greater than 0";
+    return;
+  }
+
+  if (sum === 180) {
     outputElement.innerText = "Yay, the angles form a triangle!";
   } else {
     outputElement.innerText = "Oh Oh! The angle doesn't form a triangle";

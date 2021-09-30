@@ -6,29 +6,30 @@ const outputElement = document.querySelector(".output");
 
 const calculateArea = () => {
 
-  const side1Value = Number(side1.value);
-  const side2Value = Number(side2.value);
-  const side3Value = Number(side3.value);
-if(!side1Value || !side2Value || !side3Value) {
-  outputElement.innerText = 'Please fill all the input fields.'
+  // heron's formula: a = √s(s-a)(s-b)(s-c) where s = (a + b + c)/2
+  const a = Number(side1.value);
+  const b = Number(side2.value);
+  const c = Number(side3.value);
+if(!a || !b || !c) {
+  outputElement.innerText = 'Value should not be empty or zero. Please input value greater than 0.'
   return;
 }
 
   if (
-    side1Value + side2Value > side3Value &&
-    side2Value + side3Value > side1Value &&
-    side1Value + side3Value > side2Value
+    a + b > c &&
+    b + c > a &&
+    a + c > b
   ) {
-    const semiPerimeter =
-      (side1Value + side2Value + side3Value) / 2;
+    const s =
+      (a + b + c) / 2;
 
     const result = Math.sqrt(
-      semiPerimeter *
-        (semiPerimeter - side1Value) *
-        (semiPerimeter - side2Value) *
-        (semiPerimeter - side3Value)
+      s *
+        (s - a) *
+        (s - b) *
+        (s - c)
     ).toFixed(2);
-    outputElement.innerText = `Area of a triangle using heron's formula is ${result} units`;
+    outputElement.innerText = `Area of a triangle is ${result} units`;
   } else {
     outputElement.innerText = "Enter valid side lengths such that each side lengths";
   }
